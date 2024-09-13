@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring_boot_final.metasumer.dao.IBusinessDAO">
+		
+		<!-- 모든 사업체 조회 -->
+		<select id="getAllBusiness" resultType="com.spring_boot_final.metasumer.model.BusinessVO">
+        SELECT * FROM business
+    </select>
+
+		<!-- 업체 등록 -->
+		<insert id="registerBusiness" parameterType="com.spring_boot_final.metasumer.model.BusinessVO">
+		    INSERT INTO business (memId, businessName, authStatus, authDate,
+		                          bizRegNumber, businessType, bizRegImg,
+		                          delegate, businessAddress, businessCategory, issueDate)
+		    VALUES (#{memId}, #{businessName}, #{authStatus}, #{authDate},
+		            #{bizRegNumber}, #{businessType}, #{bizRegImg},
+		            #{delegate}, #{businessAddress}, #{businessCategory}, #{issueDate})
+		</insert>
+		
+		<!-- 업체 수정 -->
+		<update id="updateBusiness" parameterType="com.spring_boot_final.metasumer.model.BusinessVO">
+		    UPDATE business
+		    SET memId = #{memId},
+		        businessName = #{businessName},
+		        authStatus = #{authStatus},
+		        authDate = #{authDate},
+		        bizRegNumber = #{bizRegNumber},
+		        businessType = #{businessType},
+		        bizRegImg = #{bizRegImg},
+		        delegate = #{delegate},
+		        businessAddress = #{businessAddress},
+		        businessCategory = #{businessCategory},
+		        issueDate = #{issueDate}
+		    WHERE bizId = #{bizId}
+		</update>
+		<!-- 업체 삭제 -->
+    <delete id="deleteBusiness" parameterType="String">
+        DELETE FROM business WHERE bizId = #{bizId}
+    </delete>
+	</mapper>

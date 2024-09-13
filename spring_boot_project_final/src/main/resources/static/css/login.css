@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+table {
+	border-collapse: collapse;
+	width: 70%;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+table, th, td {
+	border-bottom: 1px solid #87C4FF;
+	border-left: none;
+	border-right: none;
+	padding: 10px;
+	font-size: 14px;
+	line-height: 2;
+}
+
+thead th {
+	border-top: 2px solid #87C4FF;
+}
+
+tbody tr:last-child td {
+	border-bottom: 2px solid #87C4FF;
+}
+
+#id, #pwd{
+	width: 60%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+#id:focus, #pwd:focus{
+	border-color: transparent;
+	background-color: #E0F4FF;
+	outline: none;
+}
+#findLinks {
+    text-align: right;
+}
+
+#findLinks a {
+    color: #39A7FF;
+    text-decoration: none;
+}
+
+#findLinks a:hover {
+    text-decoration: underline;
+    color: #FFAB40;
+}

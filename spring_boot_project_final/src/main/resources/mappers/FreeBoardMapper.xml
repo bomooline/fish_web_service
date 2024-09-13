@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.spring_boot_final.metasumer.dao.IFreeBoardDAO">
+	<resultMap id="fbResult"
+		type="com.spring_boot_final.metasumer.model.FreeBoardVO">
+		<result property="boardPostNo" column="boardPostNo" />
+		<result property="memId" column="memId" />
+		<result property="boardCtgId" column="boardCtgId" />
+		<result property="title" column="title" />
+		<result property="createdDate" column="createdDate" />
+		<result property="content" column="content" />
+		<result property="uploadFile" column="uploadFile" />
+		<result property="memName" column="memName" />
+		<result property="price" column="price" />
+		<result property="completed" column="completed" />
+		<result property="views" column="views" />
+		<result property="boardCtgName" column="boardCtgName" />
+	</resultMap>
+	
+	<select id="selectItemsForPage" resultMap="fbResult">
+		SELECT b.boardPostNo, m.memNickname, b.memId, b.title, b.createdDate, b.boardCtgId, c.boardCtgName, b.views
+		FROM board b
+		JOIN member m ON b.memId = m.memId
+		JOIN boardCtg c ON b.boardCtgId = c.boardCtgId
+		WHERE b.boardCtgId = #{boardCtgId}
+		AND b.status != 'inactive'
+		ORDER BY b.createdDate DESC
+		LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<select id="fleamarketList" resultMap="fbResult">
+		SELECT b.boardPostNo, m.memNickname, b.memId, b.title, b.createdDate, b.boardCtgId, c.boardCtgName, b.uploadFile, b.price, b.completed, b.views
+		FROM board b
+		JOIN member m ON b.memId = m.memId
+		JOIN boardCtg c ON b.boardCtgId = c.boardCtgId
+		WHERE b.boardCtgId = #{boardCtgId} AND  b.completed = #{completed}
+		AND b.status != 'inactive'
+		ORDER BY b.createdDate DESC
+	</select>
+	
+	<select id="qnaList" resultMap="fbResult">
+		SELECT title, content, boardPostNo, boardCtgId
+		FROM board
+		WHERE boardCtgId = 3
+		AND status != 'inactive'
+		ORDER BY createdDate DESC;
+	</select>
+
+	<select id="countTotalItems" resultType="int">
+		SELECT COUNT(*) FROM board WHERE boardCtgId = #{boardCtgId} AND status != 'inactive'
+	</select>
+
+	<insert id="insertFreeBoard"
+		parameterType="com.spring_boot_final.metasumer.model.FreeBoardVO">
+		INSERT INTO board (memId, boardCtgId, title, content, uploadFile, price)
+		VALUES (#{memId}, #{boardCtgId}, #{title}, #{content}, #{uploadFile}, #{price})
+	</insert>
+
+	<select id="detailViewFreeBoard" parameterType="string" resultType="com.spring_boot_final.metasumer.model.FreeBoardVO">
+		SELECT b.boardPostNo, b.memId, b.boardCtgId, b.title, b.createdDate, b.content, b.uploadFile, m.memNickname, b.price, b.views, bc.boardCtgName
+		FROM board b
+		JOIN member m ON b.memId = m.memId
+		JOIN boardCtg bc ON b.boardCtgId = bc.boardCtgId
+		WHERE b.boardPostNo = #{boardPostNo}
+	</select>
+
+	<update id="updateFreeBoard" parameterType="com.spring_boot_final.metasumer.model.FreeBoardVO">
+		UPDATE board
+		SET title = #{title}, content = #{content}, uploadFile = #{uploadFile}, price = #{price}
+		WHERE boardPostNo = #{boardPostNo}
+	</update>
+	
+	<delete id="deleteFreeBoardComment" parameterType="map">
+		DELETE FROM comment WHERE boardPostNo = #{boardPostNo}
+	</delete>
+	
+	<delete id="deleteFreeBoard" parameterType="string">
+		DELETE FROM board WHERE boardPostNo = #{boardPostNo}
+	</delete>
+	
+	<update id="fleamarketcompleted">
+		UPDATE board
+		SET completed = #{completed}
+		WHERE boardPostNo = #{boardPostNo};
+	</update>
+	
+	<update id="countViews">
+	    UPDATE board
+	    SET views = views + 1
+	    WHERE boardPostNo = #{boardPostNo}
+	    AND memId != #{sidmemId};
+	</update>
+
+</mapper>

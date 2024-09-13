@@ -1,0 +1,391 @@
+@charset "UTF-8";
+
+/**************   
+0. index 페이지 section 설정
+**************/
+
+@media (min-width: 1256px) {
+	.indexSection {
+		width: 1256px;
+		margin: 0 auto;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+}
+
+.sectionTitle {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	color: #39A7FF;
+	letter-spacing: -1px;
+}
+
+/**************   
+1. 추천 광고, 이벤트 베너 (슬라이드쇼)
+**************/
+
+#eventAdBox {
+	margin: 30px auto;
+}
+
+
+/**************   
+2. 실시간 HOT 키워드
+**************/
+
+.keywordListWrap {
+	width: 100%;
+	padding-top: 30px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.keywordListItem {
+	display: inline-block;
+	width: 32%;
+	height: 400px;
+	border: 1px solid #39A7FF;
+	line-height: 30px;
+}
+
+.keywordListTitle {
+	margin-top: 15px;
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+
+.keywordItem {
+	margin-top: 15px;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+
+/**************   
+3. 실시간 낚시터 상황 : 조황
+**************/
+
+#nowFishingBox {
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.nowFishingWrap {
+	width: 100%;
+	padding-top: 30px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#nowFishingInfo {
+	display: inline-block;
+	width: 50%;
+	height: 400px;
+	border: 1px solid #39A7FF;
+}
+
+#nowFishingMap {
+	display: inline-block;
+	width: 45%;
+	height: 400px;
+	border: 1px solid #39A7FF;
+}
+
+#nowFishingTable td,
+#nowFishingTable th  {
+	padding-left: 10px;
+}
+
+/**************   
+4. 베스트 낚시 기록 (전체 회원 대상) / 6. 최신 낚시 기록 (전체 회원 대상)
+**************/
+
+
+.container {
+    width: 1240px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.menber_slick2 {
+    height: 350px;
+    margin: 30px auto 50px;
+}
+
+.menber_slick2 .slick-list,
+.menber_slick2 .slick-track,
+.menber_slick2 .slick-slide {
+    height: 100%;
+}
+
+.menber_slick2 .slick-list {
+	margin: 0 -15px;
+}
+
+.menber_slick2 .slick-slide {
+	height: 350px;
+	margin: 0 15px;
+}
+
+.menber_slick2 .item>a {
+    display: block;
+    height: 100%;
+    position: relative;
+    padding: 0 2px;
+    box-sizing: border-box;
+}
+
+.menber_slick2 .thumb {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.slick__box {
+    margin-top: 100px;
+}
+
+.slick-prev, .slick-next {
+	border: none;
+	background-color: transparent;
+}
+
+.slick-prev {
+	position: absolute;
+	left: 0;
+	top: 125px;
+	bottom: -20px;
+	z-index: 500;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	text-indent: -9999px; /*텍스트뒤로보내기 안보이게*/
+	opacity: 0.5;
+}
+
+.slick-prev::before {
+	content: '\f053';
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	text-indent: 0;
+	color: #39A7FF;
+	position: absolute;
+	left: 9px;
+	top: 0px;
+	font-size: 2em;
+	cursor:pointer;
+	text-shadow: -1px 0px #E0F4FF, 0px 1px #E0F4FF, 1px 0px #E0F4FF, 0px -1px #E0F4FF;
+}
+
+.slick-next {
+	position: absolute;
+	right: 0;
+	top: 125px;
+	bottom: -45px;
+	z-index: 500;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	text-indent: -9999px; /*텍스트 뒤로 치워버림*/
+	opacity: 0.5;
+}
+
+.slick-next::before {
+	content: '\f054';
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	text-indent: 0;
+	color: #39A7FF;
+	position: absolute;
+	left: 9px;
+	top: 0px;
+	font-size: 2em;
+	cursor:pointer;
+	text-shadow: -2px 0px #E0F4FF, 0px 2px #E0F4FF, 2px 0px #E0F4FF, 0px -2px #E0F4FF;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+	opacity: 1;
+}
+
+.fishRecordList{
+	overflow: hidden;
+	border: 1px solid transparent;
+	opacity: 0.7;
+}
+
+.fishRrdImgWrap {
+	overflow: hidden;
+}
+
+.fishRecordList:hover {
+	opacity: 1;
+}
+
+.fishRecordList img { /* :not(:where([section] *)) */
+	width: 100%;
+	height: 200px;
+	transition-duration: 0.3s;
+}
+
+.fishRecordList img:hover {
+	/* transform: scale(1.2, 1.2); */ 
+	transition-duration: 0.5s;
+	opacity: 1;
+}
+
+.fishRecordList div {
+	padding-left: 10px;
+}
+
+#fishRecordName {
+	font-weight: bold;
+}
+
+.fishRecordTitle {
+	font-weight: bold;
+}
+
+/**************   
+5. 베스트 업체 리스트
+**************/
+
+#bestBusinessBox {
+	margin-bottom: 40px;
+}
+
+.bestBizCtgBar {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 15px;
+	paddiing-bottom: 15px;
+}
+
+.bestBiz {
+	display: inline-block;
+	background-color: #gray;
+	border: 1px solid #87C4FF;
+	border-radius: 5px;
+	font-size: 14px;
+	letter-spacing: -1px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.bestBiz.active {
+	border: 1px solid #39A7FF;
+	background-color: #39A7FF;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.bestBusinessList {	
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 15px 0;
+}
+
+.bestBizItem {	
+	width: 19%;
+	display: inline-block;
+}
+
+.eachSectionEmphasisText {
+	font-size: 16px;
+	color: #39A7FF;
+	font-weight: bold;
+}
+
+/**************   
+7. 새로 나온 상품
+**************/
+
+#newProductBox {
+	margin-bottom: 30px;
+}
+
+.newPrdCtgBar {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 15px;
+	paddiing-bottom: 15px;
+}
+
+.newPrd {
+	display: inline-block;
+	background-color: #gray;
+	border: 1px solid #87C4FF;
+	border-radius: 5px;
+	font-size: 14px;
+	letter-spacing: -1px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.newPrd.active {
+	border: 1px solid #39A7FF;
+	background-color: #39A7FF;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.newProductList {
+	padding-top: 30px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.newPrdItem {
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.newPrdItem:hover {
+	border: 1px solid #39A7FF;
+}
+
+.newPrdItem img {
+	width: 200px;
+	height: 200px;
+}
+
+/**************   
+8. 사용자 기반 추천 상품
+**************/
+#userRecPrdBox {
+	margin-bottom: 30px;
+}
+
+.userRecPrdList {
+	padding-top: 30px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.userRecPrdItem {
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.userRecPrdItem:hover {
+	border: 1px solid #39A7FF;
+}
+
+.userRecPrdItem img {
+	width: 200px;
+	height: 200px;
+}

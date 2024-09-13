@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring_boot_final.metasumer.dao.IOrderDAO">
+  	<!-- 주문 데이터 저장 -->
+    <insert id="saveOrder" parameterType="com.spring_boot_final.metasumer.model.OrderInfoVO">
+        INSERT INTO order_info(ordNo, memId, ordRcvReceiver, ordRcvZipcode, ordRcvAddress1, 
+  		                       ordRcvAddress2, ordRcvPhone, ordRcvMsg, ordPay)
+  		VALUES(#{ordNo}, #{memId}, #{ordRcvReceiver}, #{ordRcvZipcode}, #{ordRcvAddress1}, 
+  		       #{ordRcvAddress2}, #{ordRcvPhone}, #{ordRcvMsg}, #{ordPay})
+    </insert>
+		
+		<!-- 회원정보 조회 --> 
+   <select id="getMemberById" parameterType="string" resultType="com.spring_boot_final.metasumer.model.MemberVO">
+       SELECT * FROM member WHERE memId = #{memId}
+   </select>
+  
+  </mapper>
