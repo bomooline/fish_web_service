@@ -27,39 +27,39 @@
 
 	<select id="listAllMyFishRecords" resultMap="mfResult">
 		SELECT f.memId,	m.memNickname, f.title, f.content, f.createdDate, f.uploadImage, f.boardCtgId, f.recordNo, f.views
-		FROM myFishRecords f
+		FROM myfishrecords f
 		JOIN member m ON f.memId = m.memId
 		ORDER BY f.createdDate DESC
 	</select>
 	
 	 <insert id="insertMyFishRecords" parameterType="com.spring_boot_final.metasumer.model.MyFishRecordsVO">
-        INSERT INTO myFishRecords (memId, boardCtgId, title, content, uploadImage, fishName, fishSize, equipment, location, weather, createdDate)
+        INSERT INTO myfishrecords (memId, boardCtgId, title, content, uploadImage, fishName, fishSize, equipment, location, weather, createdDate)
         VALUES (#{memId}, #{boardCtgId}, #{title}, #{content}, #{uploadImage}, #{fishName}, #{fishSize}, #{equipment}, #{location}, #{weather}, #{createdDate})
     </insert>
     
     <select id="detailViewMyFishRecords" parameterType="string" resultMap="mfResult">
 	    SELECT f.recordNo, f.memId, f.boardCtgId, f.title, f.createdDate, f.content, f.uploadImage, f.fishName, f.fishSize, f.equipment, f.location, f.weather, m.memNickname, f.views
-	    FROM myFishRecords f
+	    FROM myfishrecords f
 	    JOIN member m ON f.memId = m.memId
 	    WHERE f.recordNo = #{recordNo};
 	</select>
 	
 	<update id="updateMyFishRecords" parameterType="com.spring_boot_final.metasumer.model.MyFishRecordsVO">
-		UPDATE myFishRecords
+		UPDATE myfishrecords
         SET title = #{title}, content = #{content}, uploadImage = #{uploadImage}, fishName = #{fishName}, fishSize = #{fishSize}, createdDate = #{createdDate}, equipment = #{equipment}, location = #{location}, weather = #{weather}
         WHERE recordNo = #{recordNo}
 	</update>
 	
 	<select id="MyFishRecordsList" resultMap="mfResult">
 		SELECT f.memId,	m.memNickname, f.title, f.content, f.createdDate, f.uploadImage, f.boardCtgId, f.recordNo, f.views
-		FROM myFishRecords f
+		FROM myfishrecords f
 		JOIN member m ON f.memId = m.memId
 		WHERE f.memId = #{memId}
 		ORDER BY f.recordNo DESC
 	</select>
 	
 	<delete id="deleteMyFishRecords" parameterType="string">
-		DELETE FROM myFishRecords WHERE recordNo = #{recordNo}
+		DELETE FROM myfishrecords WHERE recordNo = #{recordNo}
 	</delete>
 	
 	<update id="countViews">
